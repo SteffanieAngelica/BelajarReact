@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .text-success{
+            color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <di id="app"></di> 
+
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('app')) 
+        // createElement
+        // root.render(
+        //     React.createElement(
+        //         'h1',
+        //         // {style : {color: 'blue'}},
+        //         {style : {color: 'blue', 'font-family': 'Verdana'}},
+        //         'Belajar React'
+        //     )
+        // )
+        // Template JSX
+        // root.render(
+        //     // bisa juga <div></div> selain <></>
+        //     <> 
+        //         <h1 className="text-success">Belajar React</h1>
+        //         <p>Belajar react menyenangkan</p>
+        //     </>
+        // )
+
+        //component
+        function Header(props){
+            return <h1>Belajar React {props.title}</h1>;
+        }
+
+        function Footer(){
+            return <h6>&copy; 2024 Nama</h6>
+        }
+
+        function HomePage(){
+            const mahasiswa = ["John", "Doe", "Jane"];
+            return <>
+                <Header/> 
+                <Header title='Asyik Banget' />
+                <Header title='Mudah' />
+                <p>Belajar React menyenangkan!</p>
+                <ul>
+                    {
+                        mahasiswa.map((mhs) => (
+                            <li key={mhs}>{mhs}</li>
+                        ))
+                    }    
+                </ul>
+                <Footer/>
+            </>;
+        }
+
+        root.render(<HomePage/>);
+    </script>
+</body>
+</html>
